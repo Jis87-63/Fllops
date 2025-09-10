@@ -15,8 +15,8 @@
   <!-- 🎨 Fontes Inter — limpa, moderna, profissional -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- 🖼️ Favicon SVG — Letra F preta em fundo branco -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='white'/><text x='50' y='65' font-size='60' fill='black' text-anchor='middle'>F</text></svg>">
+  <!-- 🖼️ Favicon SVG -->
+  <link rel="icon" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='white'/><text x='50' y='65' font-size='60' fill='black' text-anchor='middle'>F</text></svg>">
 
   <style>
     :root {
@@ -25,7 +25,7 @@
       --text-secondary: #666666;
       --border: #e0e0e0;
       --card-bg: #fafafa;
-      --accent: #0070f3; /* Azul profissional — não preto, não vermelho */
+      --accent: #0070f3;
       --shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
@@ -41,7 +41,7 @@
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
-      -webkit-text-size-adjust: 100%; /* Evita zoom no iOS */
+      -webkit-text-size-adjust: 100%;
     }
 
     .container {
@@ -50,32 +50,32 @@
       padding: 0 20px;
     }
 
-    /* HEADER — REORGANIZADO, LIMPO, PROFISSIONAL */
+    /* HEADER */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 40px 0;
-      position: relative;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
-      letter-spacing: -0.8px;
+      letter-spacing: -0.5px;
       color: var(--text);
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
+      gap: 24px;
     }
 
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 15px;
       transition: color 0.3s ease;
     }
 
@@ -94,23 +94,23 @@
 
     /* HERO */
     .hero {
-      padding: 100px 0 80px;
+      padding: 80px 0 60px;
       text-align: center;
     }
 
     .hero h1 {
-      font-size: 56px;
+      font-size: 48px;
       font-weight: 700;
-      margin-bottom: 24px;
-      letter-spacing: -1px;
+      margin-bottom: 20px;
+      letter-spacing: -0.8px;
       line-height: 1.1;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--text-secondary);
       max-width: 700px;
-      margin: 0 auto 40px;
+      margin: 0 auto 30px;
       font-weight: 400;
     }
 
@@ -118,8 +118,8 @@
       background: var(--accent);
       color: white;
       border: none;
-      padding: 16px 40px;
-      font-size: 18px;
+      padding: 14px 36px;
+      font-size: 17px;
       font-weight: 600;
       border-radius: 8px;
       cursor: pointer;
@@ -134,21 +134,21 @@
 
     /* FEATURES */
     .features {
-      padding: 80px 0;
+      padding: 60px 0;
     }
 
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      margin-top: 60px;
+      gap: 32px;
+      margin-top: 48px;
     }
 
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 40px 30px;
+      padding: 36px 28px;
       text-align: center;
       transition: all 0.3s ease;
       box-shadow: var(--shadow);
@@ -160,46 +160,46 @@
     }
 
     .feature-icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 24px;
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--accent); /* ÍCONE COLORIDO — NÃO PRETO */
+      color: var(--accent);
     }
 
     .feature-icon svg {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       stroke-width: 2;
     }
 
     .feature-card h3 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       color: var(--text);
     }
 
     .feature-card p {
       color: var(--text-secondary);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 400;
     }
 
-    /* ADS SPACE */
+    /* ADS SPACE INLINE */
     .ads-space {
       margin: 60px 0;
-      padding: 40px 20px;
+      padding: 30px 20px;
       background: #f9f9f9;
-      border-radius: 16px;
+      border-radius: 12px;
       text-align: center;
     }
 
     /* FOOTER */
     footer {
-      padding: 80px 0 40px;
+      padding: 60px 0 30px;
       text-align: center;
       color: var(--text-secondary);
       font-size: 14px;
@@ -209,15 +209,16 @@
     footer a {
       color: var(--accent);
       text-decoration: none;
-      margin: 0 10px;
+      margin: 0 8px;
       font-weight: 500;
+      font-size: 14px;
     }
 
     footer a:hover {
       text-decoration: underline;
     }
 
-    /* DRAWER (MENU LATERAL) */
+    /* DRAWER */
     .drawer {
       position: fixed;
       top: 0;
@@ -267,10 +268,11 @@
 
     .drawer-menu a {
       display: block;
-      padding: 15px 0;
+      padding: 14px 0;
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
+      font-size: 16px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -281,7 +283,7 @@
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .hero h1 {
-        font-size: 42px;
+        font-size: 36px;
       }
 
       .nav-links {
@@ -315,7 +317,7 @@
     </div>
   </div>
 
-  <!-- HEADER — REORGANIZADO, SEM BAGUNÇA -->
+  <!-- HEADER -->
   <header class="container">
     <div class="logo">Fllops.dev</div>
     <nav class="nav-links">
@@ -330,7 +332,7 @@
   <!-- HERO -->
   <section class="hero container">
     <h1>Ferramentas Reais<br>para Pessoas Reais</h1>
-    <p>Download de vídeos, hospedagem profissional, ebooks, cursos — tudo num só lugar, feito por Fllops.dev</p>
+    <p>Download de vídeos, hospedagem profissional, ebooks, cursos — tudo num só lugar.</p>
     <button class="btn-explore" onclick="scrollToTools()">Explorar Agora</button>
   </section>
 
@@ -347,13 +349,12 @@
     </script>
   </div>
 
-  <!-- FEATURES — FOCO NO ÚTIL, NÃO EM “APIs INTELIGENTES” -->
+  <!-- FEATURES -->
   <section class="features container" id="tools">
-    <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px; font-weight: 700;">Nossos Serviços</h2>
-    <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">Ferramentas práticas, diretas e que realmente ajudam no dia a dia.</p>
+    <h2 style="text-align: center; font-size: 32px; margin-bottom: 20px; font-weight: 700;">Nossos Serviços</h2>
+    <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 48px; font-size: 16px;">Ferramentas práticas, diretas e que realmente ajudam no dia a dia.</p>
 
     <div class="features-grid">
-      <!-- FERRAMENTA 1: DOWNLOADER -->
       <div class="feature-card">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -363,10 +364,9 @@
           </svg>
         </div>
         <h3>Downloader Pro</h3>
-        <p>Baixe vídeos do TikTok, Instagram e Facebook — sem marca d'água, em HD, com 1 clique.</p>
+        <p>Baixe vídeos do TikTok, Instagram e Facebook — sem marca d'água, em HD.</p>
       </div>
 
-      <!-- FERRAMENTA 2: HOSPEDAGEM -->
       <div class="feature-card">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -374,10 +374,9 @@
           </svg>
         </div>
         <h3>Hospedagem Premium</h3>
-        <p>Domínio personalizado, HTTPS, tráfego ilimitado — ideal para blogs, portfolios e lojas.</p>
+        <p>Domínio personalizado, HTTPS, tráfego ilimitado — ideal para qualquer projeto.</p>
       </div>
 
-      <!-- FERRAMENTA 3: EBOOKS & CURSOS -->
       <div class="feature-card">
         <div class="feature-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -385,7 +384,7 @@
           </svg>
         </div>
         <h3>Ebooks & Cursos</h3>
-        <p>Aprenda a ganhar dinheiro online, marketing digital, freelancing — conteúdo direto e prático.</p>
+        <p>Aprenda a ganhar dinheiro online, marketing digital, freelancing — conteúdo prático.</p>
       </div>
     </div>
   </section>
@@ -434,20 +433,6 @@
     function scrollToTools() {
       document.querySelector('#tools').scrollIntoView({ behavior: 'smooth' });
     }
-
-    // Bloquear zoom (já feito no meta viewport, mas reforçamos aqui)
-    document.addEventListener('touchmove', function(event) {
-      if (event.scale !== 1) { event.preventDefault(); }
-    }, { passive: false });
-
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-      const now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
   </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+// 🛑 ARQUIVO SECRETO — NUNCA EXPOEM NO FRONTEND
 const GIBRAPAY_CONFIG = {
   AUTH_TOKEN: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImQxMmFmYWNhLWVhNDctNGNkZS04NmJlLWJlMDM5Mzc2OTczMiIsImVtYWlsIjoienVuaWFtdW5pcjMwQGdtYWlsLmNvbSIsImlhdCI6MTc1Njk5MTk0MiwiZXhwIjoxNzU2OTk1NTQyfQ.7KFXSdhTEG1NkyyATa7sL256TUb_t2T_oqh3TVHdabc",
   WALLET_ID: "50c282d1-843f-4b9c-a287-2140e9e8d94b",
@@ -10,38 +11,33 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { amount, description, phone, email, domain, repo } = req.body;
+    const { phone, amount } = req.body;
 
-    // 👇 ENVIA PRO GIBRAPAY
-    const gibraResponse = await fetch('https://gibrapay.online/api/v1/payments', {
+    if (!phone || !amount) {
+      return res.status(400).json({ success: false, message: "Número e valor são obrigatórios." });
+    }
+
+    // 👇 , E-MAIL, ETC.
+    const gibraResponse = await fetch('https://gibrapay.online/v1/transfer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${GIBRAPAY_CONFIG.AUTH_TOKEN}`,
-        'X-API-KEY': GIBRAPAY_CONFIG.API_KEY
+        'API-Key': GIBRAPAY_CONFIG.API_KEY
       },
       body: JSON.stringify({
-        amount,
-        currency: "MZN",
-        description,
-        payer: {
-          phone,
-          email
-        },
-        meta: {
-          domain,
-          repo
-        }
+        wallet_id: GIBRAPAY_CONFIG.WALLET_ID,
+        amount: amount,
+        number_phone: phone
       })
     });
 
     const gibraData = await gibraResponse.json();
 
-    if (gibraData.success) {
+    if (gibraData.status === "success") {
       // ✅ PAGAMENTO APROVADO — RETORNA SUCESSO PRO FRONTEND
       return res.status(200).json({
         success: true,
-        message: "Pagamento aprovado. Domínio sendo configurado."
+        message: "Pagamento aprovado."
       });
     } else {
       // ❌ PAGAMENTO RECUSADO — RETORNA ERRO

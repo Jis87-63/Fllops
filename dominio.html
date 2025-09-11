@@ -2,14 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>fllops.dev — Hospede seu site com domínio personalizado</title>
-  <meta name="description" content="Hospede seu site com HTTPS, domínio personalizado e tráfego ilimitado. Preços com desconto exclusivo de 200 MZN.">
-  <!-- 🔍 Google Search Console -->
-  <meta name="google-site-verification" content="lrfXnDIgUTuzmP2fNC4M6sUOpiewQPZbv2JIgM1xLlk" />
-  <!-- 💰 Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2569329537599023" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-2569329537599023">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  <title>fllops.dev — Compre e Hospede seu Domínio</title>
+  <meta name="description" content="Hospede seu site com domínio personalizado, HTTPS e tráfego ilimitado. Preços com desconto exclusivo.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -26,46 +21,43 @@
     }
 
     .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px 16px;
     }
 
-    /* HEADER */
     header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
+      padding: 20px 0;
     }
 
     .logo {
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 700;
-      letter-spacing: -0.8px;
-      background: linear-gradient(90deg, #0070f3, #7928ca);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      letter-spacing: -0.5px;
+      color: #0070f3;
     }
 
-    /* FORM CARD */
     .form-card {
       background: white;
       border: 1px solid #e0e0e0;
       border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      padding: 32px 24px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+      margin-bottom: 40px;
     }
 
     .form-title {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 700;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
       text-align: center;
       color: #1a1a1a;
     }
 
     .form-group {
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
 
     .form-group label {
@@ -73,15 +65,15 @@
       margin-bottom: 12px;
       font-weight: 600;
       color: #1a1a1a;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .form-group input,
     .form-group select {
       width: 100%;
-      padding: 16px 20px;
-      font-size: 16px;
-      border: 2px solid #e0e0e0;
+      padding: 14px 16px;
+      font-size: 15px;
+      border: 1px solid #e0e0e0;
       border-radius: 16px;
       outline: none;
       background: white;
@@ -91,19 +83,18 @@
     .form-group input:focus,
     .form-group select:focus {
       border-color: #0070f3;
-      box-shadow: 0 4px 12px rgba(0,112,243,0.1);
+      box-shadow: 0 3px 8px rgba(0,112,243,0.1);
     }
 
-    /* DOMAIN SUGGESTIONS */
     .domain-suggestions {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin: 20px 0;
+      margin: 16px 0;
     }
 
     .domain-suggestion {
-      padding: 12px 20px;
+      padding: 10px 16px;
       background: #f8f9fa;
       border: 1px solid #e0e0e0;
       border-radius: 12px;
@@ -117,134 +108,120 @@
       border-color: #0070f3;
     }
 
-    /* PRICE DISPLAY */
     .price-display {
       background: #f8f9fa;
       border-radius: 16px;
-      padding: 30px;
+      padding: 24px;
       text-align: center;
-      margin: 40px 0;
+      margin: 32px 0;
       border: 2px dashed #0070f3;
     }
 
     .price-display h3 {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: #1a1a1a;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .price-original {
       text-decoration: line-through;
       color: #999;
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 20px;
+      margin-bottom: 8px;
     }
 
     .price-final {
-      font-size: 32px;
+      font-size: 26px;
       font-weight: 700;
       color: #0070f3;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .price-discount {
       color: #ff6b35;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 14px;
     }
 
-    /* PAYMENT SECTION */
-    .payment-section {
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 2px solid #e0e0e0;
-    }
-
-    .payment-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .payment-methods {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 30px 0;
-    }
-
-    .payment-method {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: white;
-      border: 2px solid #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
-
-    .payment-method:hover {
-      transform: scale(1.05);
-      border-color: #0070f3;
-    }
-
-    .payment-method img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
-
-    /* ACTION BUTTON */
     .action-btn {
       width: 100%;
-      padding: 18px 20px;
-      font-size: 18px;
+      padding: 16px 20px;
+      font-size: 17px;
       font-weight: 600;
       background: #0070f3;
       color: white;
       border: none;
       border-radius: 16px;
       cursor: pointer;
-      margin: 40px 0;
-      box-shadow: 0 6px 16px rgba(0,112,243,0.3);
+      margin: 32px 0;
+      box-shadow: 0 4px 12px rgba(0,112,243,0.3);
       transition: all 0.3s ease;
     }
 
     .action-btn:hover {
       background: #005fcc;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,112,243,0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,112,243,0.4);
     }
 
-    /* FOOTER */
+    .success-message {
+      display: none;
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .success-message h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #2e7d32;
+      margin-bottom: 16px;
+    }
+
+    .success-message p {
+      font-size: 16px;
+      color: #388e3c;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .success-icon {
+      font-size: 48px;
+      color: #4caf50;
+      margin-bottom: 20px;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0070f3;
+    }
+
     footer {
-      margin-top: 80px;
-      padding: 40px 0;
+      padding: 40px 0 20px;
       text-align: center;
       color: #777;
       font-size: 14px;
       border-top: 1px solid #e0e0e0;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
       .container {
-        padding: 0 16px;
+        max-width: 600px;
+        padding: 40px 20px;
       }
       .form-card {
-        padding: 30px 20px;
+        padding: 40px 32px;
       }
-      .domain-suggestions {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .payment-methods {
-        flex-direction: column;
-        gap: 20px;
+      .form-title {
+        font-size: 28px;
       }
     }
   </style>
@@ -255,8 +232,8 @@
       <div class="logo">fllops.dev</div>
     </header>
 
-    <div class="form-card">
-      <h2 class="form-title">Hospede seu site com domínio personalizado</h2>
+    <div id="purchaseForm" class="form-card">
+      <h2 class="form-title">Compre e Hospede seu Domínio</h2>
 
       <div class="form-group">
         <label for="repoUrl">Link do Repositório Git ou Nome do Site</label>
@@ -265,9 +242,9 @@
 
       <div class="form-group">
         <label for="domainName">Escolha seu domínio personalizado</label>
-        <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 12px;">
           <input type="text" id="domainName" placeholder="meusite" style="flex: 1;" />
-          <select id="domainExtension" style="width: 120px;">
+          <select id="domainExtension" style="width: 100px;">
             <option value=".com">.com</option>
             <option value=".online">.online</option>
             <option value=".tech">.tech</option>
@@ -282,6 +259,16 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="email">Seu E-mail (para contato)</label>
+        <input type="email" id="email" placeholder="seuemail@gmail.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="mpesaNumber">Número de M-Pesa para pagamento</label>
+        <input type="tel" id="mpesaNumber" placeholder="84 XXX XXX XX" />
+      </div>
+
       <div class="price-display">
         <h3>Preço com desconto exclusivo</h3>
         <div class="price-original">Preço de mercado: 1000 MZN</div>
@@ -289,22 +276,15 @@
         <div class="price-discount">Você economiza 200 MZN!</div>
       </div>
 
-      <div class="payment-section">
-        <h3 class="payment-title">Finalize seu pagamento</h3>
+      <button class="action-btn" onclick="processPayment()">Comprar e Hospedar</button>
+      <div id="loading" class="loading">Processando pagamento... Aguarde 🔄</div>
+    </div>
 
-        <div class="form-group">
-          <label for="mpesaNumber">Número de M-Pesa para pagamento</label>
-          <input type="text" id="mpesaNumber" placeholder="84 XXX XXX XX" />
-        </div>
-
-        <div class="payment-methods">
-          <div class="payment-method">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/M-Pesa_logo.svg/800px-M-Pesa_logo.svg.png" alt="M-Pesa">
-          </div>
-        </div>
-
-        <button class="action-btn" onclick="processPayment()">Hospedar Agora com Gibrapay</button>
-      </div>
+    <div id="successMessage" class="success-message">
+      <div class="success-icon">✅</div>
+      <h3>Compra do domínio efectuado com sucesso!</h3>
+      <p>Seu site estará no ar dentro de 2 horas. Enviaremos um e-mail de confirmação para o endereço fornecido.</p>
+      <p><strong>Obrigado por escolher fllops.dev!</strong></p>
     </div>
 
     <footer>
@@ -321,50 +301,49 @@
       const repoUrl = document.getElementById('repoUrl').value.trim();
       const domainName = document.getElementById('domainName').value.trim();
       const domainExtension = document.getElementById('domainExtension').value;
+      const email = document.getElementById('email').value.trim();
       const mpesaNumber = document.getElementById('mpesaNumber').value.trim();
 
-      if (!repoUrl || !domainName || !mpesaNumber) {
+      if (!repoUrl || !domainName || !email || !mpesaNumber) {
         alert("Por favor, preencha todos os campos!");
         return;
       }
 
       const fullDomain = `${domainName}${domainExtension}`;
-      const finalPrice = 800; // 1000 - 200 de desconto
+      const finalPrice = 800;
 
-      // 👇 INTEGRAÇÃO COM GIBRAPAY
+      const loading = document.getElementById('loading');
+      const purchaseForm = document.getElementById('purchaseForm');
+      const successMessage = document.getElementById('successMessage');
+
+      loading.style.display = 'block';
+
       try {
-        const response = await fetch('https://gibrapay.online/api/v1/payments', {
+        // 👇 ENVIA PRO BACKEND — QUEM FALA COM GIBRAPAY
+        const response = await fetch('/api/checkout', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImQxMmFmYWNhLWVhNDctNGNkZS04NmJlLWJlMDM5Mzc2OTczMiIsImVtYWlsIjoienVuaWFtdW5pcjMwQGdtYWlsLmNvbSIsImlhdCI6MTc1Njk5MTk0MiwiZXhwIjoxNzU2OTk1NTQyfQ.7KFXSdhTEG1NkyyATa7sL256TUb_t2T_oqh3TVHdabc',
-            'X-API-KEY': 'b3b33cba8a903626a015d592754f1dcec756e9fbb12d411516f4a79b04aba8923ebb6396da29e61c899154ab005aaf056961b819c263e1ec5d88c60b9cae6aba'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             amount: finalPrice,
-            currency: "MZN",
             description: `Hospedagem de ${fullDomain}`,
-            payer: {
-              phone: mpesaNumber,
-              email: "cliente@fllops.dev"
-            },
-            metadata: {
-              domain: fullDomain,
-              repo: repoUrl
-            }
+            phone: mpesaNumber,
+            email: email,
+            domain: fullDomain,
+            repo: repoUrl
           })
         });
 
         const data = await response.json();
 
         if (data.success) {
-          alert(`✅ Pedido realizado com sucesso! Verifique seu M-Pesa para confirmar o pagamento de ${finalPrice} MZN.`);
-          // Aqui você pode redirecionar pra uma página de sucesso ou iniciar o processo de hospedagem
+          purchaseForm.style.display = 'none';
+          successMessage.style.display = 'block';
         } else {
-          throw new Error(data.message || "Erro ao processar pagamento");
+          throw new Error(data.message || "Pagamento não aprovado. Tente novamente.");
         }
       } catch (error) {
-        alert("❌ Erro ao processar pagamento: " + error.message);
+        alert("❌ Erro: " + error.message);
+        loading.style.display = 'none';
       }
     }
   </script>

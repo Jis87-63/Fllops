@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fllops.dev — Ferramentas Premium para Criadores</title>
+  <meta name="description" content="Baixe vídeos, hospede sites, use IA avançada, ouça músicas e ganhe dinheiro — tudo num só lugar.">
+  <!-- 🔍 Google Search Console -->
+  <meta name="google-site-verification" content="lrfXnDIgUTuzmP2fNC4M6sUOpiewQPZbv2JIgM1xLlk" />
+  <!-- 💰 Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2569329537599023" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-2569329537599023">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    /* HEADER — SÓ fllops.dev + TERMOS DE PAGAMENTO */
+    header {
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, #0070f3, #7928ca);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .payment-terms {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .payment-terms span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .payment-terms svg {
+      width: 16px;
+      height: 16px;
+      fill: #0070f3;
+    }
+
+    /* INTRO TOP */
+    .intro-top {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 120px;
+    }
+
+    .intro-top h1 {
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+
+    .intro-top p {
+      font-size: 20px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* TOOLS GRID — GORDO, MACIO, ARREDONDADO */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 60px;
+      margin-bottom: 140px;
+    }
+
+    .tool-card {
+      background: white;
+      border: 2px solid #f0f0f0;
+      border-radius: 30px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-15px);
+      border-color: #e0e0e0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .tool-icon-wrapper {
+      width: 140px;
+      height: 140px;
+      border-radius: 40px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 40px;
+      padding: 20px;
+      border: 2px solid #f0f0f0;
+    }
+
+    .tool-icon {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+    }
+
+    .tool-name {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      line-height: 1.2;
+    }
+
+    .tool-desc {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* PREMIUM BADGE — LINDO E CHAMATIVO */
+    .premium-badge {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #ff6b35, #ff8e53);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 107, 53, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+    }
+
+    /* INTRO BOTTOM — DEPOIS DOS PRODUTOS */
+    .intro-bottom {
+      background: #f8f9fa;
+      border-radius: 40px;
+      padding: 80px;
+      margin: 100px 0;
+      text-align: center;
+    }
+
+    .intro-bottom h2 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #1a1a1a;
+    }
+
+    .intro-bottom p {
+      font-size: 20px;
+      color: #555;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+
+    /* PAYMENT METHODS — M-PESA E EMOLA */
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 60px 0;
+    }
+
+    .payment-method {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .payment-method:hover {
+      transform: scale(1.05);
+      border-color: #0070f3;
+    }
+
+    .payment-method img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    /* ADS */
+    .ads-space {
+      margin: 80px 0;
+      padding: 40px;
+      background: #f0f0f0;
+      border-radius: 30px;
+      text-align: center;
+    }
+
+    /* FOOTER — SÓ fllops.dev */
+    footer {
+      padding: 80px 0 40px;
+      text-align: center;
+    }
+
+    footer .logo {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 20px;
+      }
+      .logo {
+        font-size: 36px;
+      }
+      .intro-top h1 {
+        font-size: 42px;
+      }
+      .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .tool-card {
+        padding: 40px 20px;
+      }
+      .tool-icon-wrapper {
+        width: 120px;
+        height: 120px;
+        border-radius: 30px;
+      }
+      .tool-icon {
+        width: 80px;
+        height: 80px;
+      }
+      .tool-name {
+        font-size: 24px;
+      }
+      .intro-bottom {
+        padding: 60px 20px;
+      }
+      .intro-bottom h2 {
+        font-size: 32px;
+      }
+      .payment-methods {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">fllops.dev</div>
+      <div class="payment-terms">
+        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12H3M12 21v-18M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> SSL Seguro</span>
+        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Pagamento Rápido</span>
+      </div>
+    </header>
+
+    <div class="intro-top">
+      <h1>Ferramentas Premium<br>para Criadores Modernos</h1>
+      <p>Tudo que você precisa num só lugar — rápido, poderoso, feito pra você crescer.</p>
+    </div>
+
+    <!-- ANÚNCIO 1 -->
+    <div class="ads-space">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2569329537599023"
+           data-ad-slot="728x90"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="tools-grid">
+      <!-- FERRAMENTA 1: BAIXADOR DE VÍDEOS -->
+      <div class="tool-card" onclick="window.location.href='tiktok.html'">
+        <div class="tool-icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0070f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </div>
+        <div class="tool-name">Baixador de Vídeos</div>
+        <div class="tool-desc">Baixe vídeos do TikTok sem marca d'água, em HD, com 1 clique — igual SnapTik.app.</div>
+      </div>
+
+      <!-- FERRAMENTA 2: HOSPEDAR (PREMIUM) -->
+      <div class="tool-card" onclick="window.location.href='pay.html'">
+        <div class="premium-badge">Premium</div>
+        <div class="tool-icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0070f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <div class="tool-name">Hospedar</div>
+        <div class="tool-desc">Hospede seu site com domínio personalizado, HTTPS, tráfego ilimitado — Cloudflare Workers + R2.</div>
+      </div>
+
+      <!-- FERRAMENTA 3: VISUALMIND (PREMIUM) -->
+      <div class="tool-card" onclick="window.location.href='pay.html'">
+        <div class="premium-badge">Premium</div>
+        <div class="tool-icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0070f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
+        <div class="tool-name">VisualMind</div>
+        <div class="tool-desc">IA avançada como ChatGPT — mas mais poderosa, com visão, voz, e multimodal — 100% sua.</div>
+      </div>
+
+      <!-- FERRAMENTA 4: FLLOPS MUSIC -->
+      <div class="tool-card" onclick="window.location.href='music.html'">
+        <div class="tool-icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0070f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v15"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="5" r="3"></circle>
+          </svg>
+        </div>
+        <div class="tool-name">FllopsMusic</div>
+        <div class="tool-desc">Baixe músicas MP3 do YouTube, TikTok, Instagram — ouça online ou baixe — igual Tubidy.</div>
+      </div>
+
+      <!-- FERRAMENTA 5: GANHAR DINHEIRO 1 (PREMIUM) -->
+      <div class="tool-card" onclick="window.location.href='pay.html'">
+        <div class="premium-badge">Premium</div>
+        <div class="tool-icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0070f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="tool-name">Ebooks Pro</div>
+        <div class="tool-desc">Aprenda a ganhar dinheiro online com ebooks exclusivos — marketing, freelancing, negócios.</div>
+      </div>
+
+      <!-- FERRAMENTA 6: GANHAR DINHEIRO 2 (PREMIUM) -->
+      <div class="tool-card" onclick="window.location.href='pay.html'">
+        <div class="premium-badge">Premium</div>
+        <div class="tool-icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0070f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="tool-name">Cursos Avançados</div>
+        <div class="tool-desc">Cursos práticos de IA, automação, monetização — feitos por experts, pra você dominar.</div>
+      </div>
+    </div>
+
+    <!-- INTRO BOTTOM — DEPOIS DOS PRODUTOS -->
+    <div class="intro-bottom">
+      <h2>Por que escolher fllops.dev?</h2>
+      <p>Criamos ferramentas que realmente funcionam — sem firulas, sem promessas vazias. Tudo é testado, atualizado diariamente, e feito com amor por quem entende suas necessidades. Hospedagem profissional, IA avançada, download sem marca — tudo num só lugar, sem complicações.</p>
+      <p><strong>Confie em quem entrega — fllops.dev.</strong></p>
+    </div>
+
+    <!-- PAYMENT METHODS — M-PESA E EMOLA -->
+    <div class="payment-methods">
+      <div class="payment-method">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/M-Pesa_logo.svg/1200px-M-Pesa_logo.svg.png" alt="M-Pesa">
+      </div>
+      <div class="payment-method">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Emola_Logo.png/1200px-Emola_Logo.png" alt="Emola">
+      </div>
+    </div>
+
+    <!-- ANÚNCIO 2 -->
+    <div class="ads-space">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2569329537599023"
+           data-ad-slot="300x250"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <footer>
+      <div class="logo">fllops.dev</div>
+    </footer>
+  </div>
+</body>
+</html>

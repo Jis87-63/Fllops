@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="html">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fllops.dev — Baixe Vídeos e MP3 do TikTok Sem Marca</title>
+  <meta name="description" content="Baixe vídeos e áudio (MP3) do TikTok sem marca d'água — rápido, grátis, em HD. Nenhum software necessário.">
+  <!-- 🔍 Google Search Console -->
+  <meta name="google-site-verification" content="lrfXnDIgUTuzmP2fNC4M6sUOpiewQPZbv2JIgM1xLlk" />
+  <!-- 💰 Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2569329537599023" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-2569329537599023">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-secondary: #666666;
+      --border: #e0e0e0;
+      --card-bg: #fafafa;
+      --accent: #0070f3;
+      --shadow: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-strong: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #ffffff;
+      --text-secondary: #aaaaaa;
+      --border: #333333;
+      --card-bg: #1e1e1e;
+      --accent: #4dabf5;
+      --shadow: 0 2px 8px rgba(0,0,0,0.2);
+      --shadow-strong: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER — FLLOPS.DEV */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* INPUT — ESTILO MATERIAL */
+    .input-group {
+      margin: 30px 0;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 18px 20px;
+      font-size: 16px;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      outline: none;
+      background: var(--bg);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-strong);
+    }
+
+    /* BOTÃO DE AÇÃO */
+    .action-btn {
+      width: 100%;
+      padding: 18px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background: #005fcc;
+      box-shadow: var(--shadow-strong);
+    }
+
+    /* RESULTADO */
+    .result-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 40px 0;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .result-card img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .result-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .result-card p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .btn-play {
+      background: #000;
+      color: white;
+    }
+
+    [data-theme="dark"] .btn-play {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-download {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* PLAYER */
+    .media-player {
+      margin: 20px 0;
+    }
+
+    .media-player video,
+    .media-player audio {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    /* LOADING */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+      display: none;
+    }
+
+    /* INTRODUÇÃO FULL */
+    .intro {
+      margin: 60px 0;
+      padding: 40px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--accent);
+    }
+
+    .intro p {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .icon-item {
+      text-align: center;
+    }
+
+    .icon-item svg {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 15px;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+    }
+
+    .icon-item span {
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* FAQ */
+    .faq {
+      margin: 60px 0;
+    }
+
+    .faq h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--accent);
+    }
+
+    .faq-item {
+      margin-bottom: 30px;
+      padding: 25px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-question {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+
+    .faq-answer {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ANÚNCIOS PEQUENOS — SÓ OS BANNERS DISCRETOS */
+    .ads-small {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .ads-small ins {
+      display: inline-block;
+      width: 300px;
+      height: 50px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 480px) {
+      .intro {
+        padding: 30px 20px;
+      }
+      .icon-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">fllops.dev</div>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- ANÚNCIO PEQUENO 1 -->
+    <div class="ads-small">
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:50px"
+           data-ad-client="ca-pub-2569329537599023"
+           data-ad-slot="small-banner-1"
+           data-ad-format="auto"
+           data-full-width-responsive="false"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="input-group">
+      <label for="urlInput">Cole o link do TikTok aqui</label>
+      <input type="text" id="urlInput" placeholder="https://www.tiktok.com/@..." />
+    </div>
+
+    <button class="action-btn" onclick="baixarVideo()">Baixar Vídeo ou MP3</button>
+
+    <div id="loading" class="loading">Processando... Aguarde 🎵</div>
+    <div id="result"></div>
+
+    <!-- ANÚNCIO PEQUENO 2 -->
+    <div class="ads-small">
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:50px"
+           data-ad-client="ca-pub-2569329537599023"
+           data-ad-slot="small-banner-2"
+           data-ad-format="auto"
+           data-full-width-responsive="false"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- INTRODUÇÃO FULL -->
+    <div class="intro">
+      <h2>Como o fllops.dev Funciona</h2>
+      <p>O fllops.dev é a ferramenta mais rápida e confiável para baixar vídeos e áudio do TikTok — sem marca d'água, em HD, e totalmente grátis. Nenhum software necessário.</p>
+
+      <div class="icon-grid">
+        <div class="icon-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Cole o Link</span>
+        </div>
+        <div class="icon-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          <span>Clique em Baixar</span>
+        </div>
+        <div class="icon-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          <span>MP3 ou MP4</span>
+        </div>
+        <div class="icon-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span>Totalmente Grátis</span>
+        </div>
+      </div>
+
+      <p><strong>Sem instalação. Sem registro. Sem limites.</strong></p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Como baixar um vídeo do TikTok?</div>
+        <div class="faq-answer">
+          Abra o app do TikTok, escolha o vídeo, clique em "Compartilhar" → "Copiar link". Volte ao fllops.dev, cole o link e clique em "Baixar". Pronto!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Como baixar só o áudio (MP3)?</div>
+        <div class="faq-answer">
+          Após processar o vídeo, clique no botão "Baixar MP3". O áudio será extraído e baixado em formato MP3, perfeito para tocar em qualquer dispositivo.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">É realmente grátis?</div>
+        <div class="faq-answer">
+          Sim! O fllops.dev é 100% gratuito. Sustentamos o serviço com anúncios discretos — sem cobranças, sem premium, sem pegadinhas.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Funciona em iPhone e Android?</div>
+        <div class="faq-answer">
+          Sim! Funciona em qualquer dispositivo com navegador moderno. Em iPhones, recomendamos usar o Safari e garantir que o iOS esteja atualizado.
+        </div>
+      </div>
+    </div>
+
+    <!-- ANÚNCIO PEQUENO 3 -->
+    <div class="ads-small">
+      <ins class="adsbygoogle"
+           style="display:inline-block;width:300px;height:50px"
+           data-ad-client="ca-pub-2569329537599023"
+           data-ad-slot="small-banner-3"
+           data-ad-format="auto"
+           data-full-width-responsive="false"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <footer>
+      <p>© 2025 fllops.dev — Feito por criadores, para criadores.</p>
+      <p>
+        <a href="#" style="color: var(--accent); margin: 0 10px; text-decoration: none;">Política de Privacidade</a> |
+        <a href="#" style="color: var(--accent); margin: 0 10px; text-decoration: none;">Termos de Uso</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Modo Escuro
+    function toggleTheme() {
+      const html = document.getElementById('html');
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      document.querySelector('.theme-toggle').innerText = newTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Carrega tema salvo
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.getElementById('html').setAttribute('data-theme', savedTheme);
+    document.querySelector('.theme-toggle').innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    // Baixar Vídeo ou MP3
+    async function baixarVideo() {
+      const urlInput = document.getElementById('urlInput').value.trim();
+      if (!urlInput) {
+        alert("Por favor, cole um link do TikTok!");
+        return;
+      }
+
+      const loading = document.getElementById('loading');
+      const resultDiv = document.getElementById('result');
+      loading.style.display = 'block';
+      resultDiv.innerHTML = '';
+
+      try {
+        const meuServidor = 'https://promts.carlitosmarques08.workers.dev';
+        const params = new URLSearchParams({ url: urlInput });
+
+        const response = await fetch(`${meuServidor}?${params}`);
+        const data = await response.json();
+
+        if (data.success && data.video_url) {
+          const videoUrl = data.video_url;
+          const audioUrl = data.music_url || videoUrl.replace('.mp4', '.mp3'); // Fallback
+
+          resultDiv.innerHTML = `
+            <div class="result-card">
+              <img src="${data.cover || ''}" alt="${data.title || 'Vídeo'}" style="max-height: 300px;">
+              <h3>${data.title || 'Vídeo sem título'}</h3>
+              <p>${data.platform || 'TikTok'} • ${data.author || ''}</p>
+              <div class="media-player">
+                <video controls poster="${data.cover || ''}">
+                  <source src="${videoUrl}" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+              </div>
+              <div class="btn-group">
+                <button class="btn btn-play" onclick="document.querySelector('video').play()">▶️ Assistir</button>
+                <button class="btn btn-download" onclick="baixarComAnuncio('${videoUrl}')">⬇️ Baixar Vídeo</button>
+              </div>
+              <div style="margin-top: 20px;">
+                <button class="btn btn-download" onclick="baixarComAnuncio('${audioUrl}')">🎵 Baixar MP3</button>
+              </div>
+            </div>
+          `;
+        } else {
+          throw new Error(data.error || "Não foi possível extrair o conteúdo.");
+        }
+      } catch (error) {
+        alert("❌ Erro: " + error.message);
+      } finally {
+        loading.style.display = 'none';
+      }
+    }
+
+    // Mostra anúncio antes de baixar
+    function baixarComAnuncio(url) {
+      // Mostra anúncio (simulado — em produção, use adsbygoogle)
+      alert("Apoie nosso site — seu download começará em 2 segundos!");
+
+      setTimeout(() => {
+        window.open(url, '_blank');
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
-  <title>fllops.dev — Compre e Hospede seu Domínio</title>
-  <meta name="description" content="Hospede seu site com domínio personalizado, HTTPS e tráfego ilimitado. Preços com desconto exclusivo.">
+  <title>fllops.dev — Pagamento Rápido e Seguro</title>
+  <meta name="description" content="Pague com M-Pesa e ative seu domínio em minutos. Rápido, seguro, sem complicações.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -86,28 +86,6 @@
       box-shadow: 0 3px 8px rgba(0,112,243,0.1);
     }
 
-    .domain-suggestions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 16px 0;
-    }
-
-    .domain-suggestion {
-      padding: 10px 16px;
-      background: #f8f9fa;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .domain-suggestion:hover {
-      background: #eef2ff;
-      border-color: #0070f3;
-    }
-
     .price-display {
       background: #f8f9fa;
       border-radius: 16px;
@@ -117,31 +95,11 @@
       border: 2px dashed #0070f3;
     }
 
-    .price-display h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin-bottom: 12px;
-    }
-
-    .price-original {
-      text-decoration: line-through;
-      color: #999;
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
     .price-final {
       font-size: 26px;
       font-weight: 700;
       color: #0070f3;
       margin-bottom: 12px;
-    }
-
-    .price-discount {
-      color: #ff6b35;
-      font-weight: 600;
-      font-size: 14px;
     }
 
     .action-btn {
@@ -165,18 +123,47 @@
       box-shadow: 0 6px 16px rgba(0,112,243,0.4);
     }
 
-    .success-message {
+    .loading {
       display: none;
-      background: #e8f5e9;
-      border: 2px solid #4caf50;
-      border-radius: 16px;
-      padding: 32px 24px;
       text-align: center;
-      margin: 40px 0;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0070f3;
     }
 
-    .success-message h3 {
-      font-size: 22px;
+    /* SUCCESS MESSAGE — LINDA, COM ÍCONE, ANIMAÇÃO */
+    .success-message {
+      display: none;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border: 2px solid #4caf50;
+      border-radius: 24px;
+      padding: 40px 24px;
+      text-align: center;
+      margin: 40px auto;
+      max-width: 500px;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-icon {
+      font-size: 64px;
+      color: #4caf50;
+      margin-bottom: 20px;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .success-message h2 {
+      font-size: 26px;
       font-weight: 700;
       color: #2e7d32;
       margin-bottom: 16px;
@@ -187,21 +174,6 @@
       color: #388e3c;
       line-height: 1.6;
       margin-bottom: 20px;
-    }
-
-    .success-icon {
-      font-size: 48px;
-      color: #4caf50;
-      margin-bottom: 20px;
-    }
-
-    .loading {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      font-size: 16px;
-      font-weight: 600;
-      color: #0070f3;
     }
 
     footer {
@@ -220,9 +192,6 @@
       .form-card {
         padding: 40px 32px;
       }
-      .form-title {
-        font-size: 28px;
-      }
     }
   </style>
 </head>
@@ -232,111 +201,84 @@
       <div class="logo">fllops.dev</div>
     </header>
 
-    <div id="purchaseForm" class="form-card">
-      <h2 class="form-title">Compre e Hospede seu Domínio</h2>
+    <!-- FORMULÁRIO DE PAGAMENTO -->
+    <div id="paymentForm" class="form-card">
+      <h2 class="form-title">Finalize seu pagamento</h2>
 
+      <!-- Campos "decorativos" — não são enviados pro Gibrapay -->
       <div class="form-group">
-        <label for="repoUrl">Link do Repositório Git ou Nome do Site</label>
-        <input type="text" id="repoUrl" placeholder="https://github.com/seu-usuario/seu-repo" />
+        <label for="domainName">Domínio selecionado</label>
+        <input type="text" id="domainName" placeholder="meusite.com" readonly />
       </div>
 
       <div class="form-group">
-        <label for="domainName">Escolha seu domínio personalizado</label>
-        <div style="display: flex; gap: 10px; margin-bottom: 12px;">
-          <input type="text" id="domainName" placeholder="meusite" style="flex: 1;" />
-          <select id="domainExtension" style="width: 100px;">
-            <option value=".com">.com</option>
-            <option value=".online">.online</option>
-            <option value=".tech">.tech</option>
-            <option value=".site">.site</option>
-            <option value=".xyz">.xyz</option>
-          </select>
-        </div>
-        <div class="domain-suggestions">
-          <div class="domain-suggestion" onclick="setDomain('meusite')">meusite</div>
-          <div class="domain-suggestion" onclick="setDomain('meuprojeto')">meuprojeto</div>
-          <div class="domain-suggestion" onclick="setDomain('meublog')">meublog</div>
-        </div>
+        <label for="repoUrl">Repositório Git</label>
+        <input type="text" id="repoUrl" placeholder="https://github.com/seu-usuario/seu-repo" readonly />
       </div>
 
       <div class="form-group">
-        <label for="email">Seu E-mail (para contato)</label>
-        <input type="email" id="email" placeholder="seuemail@gmail.com" />
+        <label for="email">Seu E-mail</label>
+        <input type="email" id="email" placeholder="seuemail@gmail.com" readonly />
       </div>
 
       <div class="form-group">
-        <label for="mpesaNumber">Número de M-Pesa para pagamento</label>
-        <input type="tel" id="mpesaNumber" placeholder="84 XXX XXX XX" />
+        <label for="mpesaNumber">Número de M-Pesa</label>
+        <input type="tel" id="mpesaNumber" placeholder="84 XXX XXX XX" required />
       </div>
 
       <div class="price-display">
-        <h3>Preço com desconto exclusivo</h3>
-        <div class="price-original">Preço de mercado: 1000 MZN</div>
         <div class="price-final" id="finalPrice">800 MZN</div>
-        <div class="price-discount">Você economiza 200 MZN!</div>
       </div>
 
-      <button class="action-btn" onclick="processPayment()">Comprar e Hospedar</button>
-      <div id="loading" class="loading">Processando pagamento... Aguarde 🔄</div>
+      <button class="action-btn" onclick="processPayment()">Pagar com M-Pesa</button>
+      <div id="loading" class="loading">Aguarde... Enviando solicitação ao M-Pesa 🔄</div>
     </div>
 
+    <!-- MENSAGEM DE SUCESSO — LINDA, ANIMADA -->
     <div id="successMessage" class="success-message">
-      <div class="success-icon">✅</div>
-      <h3>Compra do domínio efectuado com sucesso!</h3>
-      <p>Seu site estará no ar dentro de 2 horas. Enviaremos um e-mail de confirmação para o endereço fornecido.</p>
-      <p><strong>Obrigado por escolher fllops.dev!</strong></p>
+      <div class="success-icon">🎉</div>
+      <h2>Pagamento efectuado com sucesso!</h2>
+      <p>Seu domínio será activado em breve. Obrigado por escolher fllops.dev!</p>
+      <p><strong>Seu site estará no ar dentro de 2 horas.</strong></p>
     </div>
 
     <footer>
-      <p>© 2025 fllops.dev — Hospedagem profissional com domínio personalizado e HTTPS.</p>
+      <p>© 2025 fllops.dev — Pagamento seguro via M-Pesa.</p>
     </footer>
   </div>
 
   <script>
-    function setDomain(name) {
-      document.getElementById('domainName').value = name;
-    }
-
     async function processPayment() {
-      const repoUrl = document.getElementById('repoUrl').value.trim();
-      const domainName = document.getElementById('domainName').value.trim();
-      const domainExtension = document.getElementById('domainExtension').value;
-      const email = document.getElementById('email').value.trim();
       const mpesaNumber = document.getElementById('mpesaNumber').value.trim();
+      const finalPrice = 800;
 
-      if (!repoUrl || !domainName || !email || !mpesaNumber) {
-        alert("Por favor, preencha todos os campos!");
+      if (!mpesaNumber) {
+        alert("Por favor, insira seu número de M-Pesa!");
         return;
       }
 
-      const fullDomain = `${domainName}${domainExtension}`;
-      const finalPrice = 800;
-
       const loading = document.getElementById('loading');
-      const purchaseForm = document.getElementById('purchaseForm');
+      const paymentForm = document.getElementById('paymentForm');
       const successMessage = document.getElementById('successMessage');
 
       loading.style.display = 'block';
 
       try {
-        // 👇 ENVIA PRO BACKEND — QUEM FALA COM GIBRAPAY
-        const response = await fetch('/api/checkout', {
+        // 
+        const response = await fetch('/api/pay', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            amount: finalPrice,
-            description: `Hospedagem de ${fullDomain}`,
             phone: mpesaNumber,
-            email: email,
-            domain: fullDomain,
-            repo: repoUrl
+            amount: finalPrice
           })
         });
 
         const data = await response.json();
 
         if (data.success) {
-          purchaseForm.style.display = 'none';
+          // ✅ PAGAMENTO APROVADO — 
+          paymentForm.style.display = 'none';
           successMessage.style.display = 'block';
         } else {
           throw new Error(data.message || "Pagamento não aprovado. Tente novamente.");

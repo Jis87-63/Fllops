@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
-  <title>fllops.dev — Pagamento Rápido e Seguro</title>
-  <meta name="description" content="Pague com M-Pesa e ative seu domínio em minutos. Rápido, seguro, sem complicações.">
+  <title>fllops.dev — Compre seu Domínio com M-Pesa</title>
+  <meta name="description" content="Compre domínios .com, .online, .tech com M-Pesa. Rápido, seguro, sem complicações.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -86,6 +86,32 @@
       box-shadow: 0 3px 8px rgba(0,112,243,0.1);
     }
 
+    .domain-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding: 16px;
+      background: #f8f9fa;
+      border-radius: 16px;
+      align-items: center;
+    }
+
+    .domain-name {
+      flex: 1;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .domain-price {
+      font-weight: 700;
+      color: #0070f3;
+    }
+
+    .domain-select {
+      width: 24px;
+      height: 24px;
+    }
+
     .price-display {
       background: #f8f9fa;
       border-radius: 16px;
@@ -93,6 +119,12 @@
       text-align: center;
       margin: 32px 0;
       border: 2px dashed #0070f3;
+    }
+
+    .price-label {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 12px;
     }
 
     .price-final {
@@ -201,37 +233,33 @@
       <div class="logo">fllops.dev</div>
     </header>
 
-    <!-- FORMULÁRIO DE PAGAMENTO -->
     <div id="paymentForm" class="form-card">
-      <h2 class="form-title">Finalize seu pagamento</h2>
+      <h2 class="form-title">Compre seu Domínio com M-Pesa</h2>
 
-      <!-- Campos "decorativos" — não são enviados pro Gibrapay -->
       <div class="form-group">
-        <label for="domainName">Domínio selecionado</label>
-        <input type="text" id="domainName" placeholder="meusite.com" readonly />
+        <label for="siteName">Nome do Site ou Link do Repositório Git</label>
+        <input type="text" id="siteName" placeholder="meusite ou https://github.com/seu-usuario" required />
       </div>
 
       <div class="form-group">
-        <label for="repoUrl">Repositório Git</label>
-        <input type="text" id="repoUrl" placeholder="https://github.com/seu-usuario/seu-repo" readonly />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Seu E-mail</label>
-        <input type="email" id="email" placeholder="seuemail@gmail.com" readonly />
-      </div>
-
-      <div class="form-group">
-        <label for="mpesaNumber">Número de M-Pesa</label>
-        <input type="tel" id="mpesaNumber" placeholder="84 XXX XXX XX" required />
+        <label>Escolha seu Domínio</label>
+        <div id="domainsList">
+          <!-- Domínios serão gerados dinamicamente -->
+        </div>
       </div>
 
       <div class="price-display">
+        <div class="price-label">Valor a pagar</div>
         <div class="price-final" id="finalPrice">800 MZN</div>
       </div>
 
-      <button class="action-btn" onclick="processPayment()">Pagar com M-Pesa</button>
-      <div id="loading" class="loading">Aguarde... Enviando solicitação ao M-Pesa 🔄</div>
+      <div class="form-group">
+        <label for="mpesaNumber">Número de M-Pesa para pagamento</label>
+        <input type="tel" id="mpesaNumber" placeholder="84 XXX XXX XX" required />
+      </div>
+
+      <button class="action-btn" onclick="processPayment()">Pagar Agora com M-Pesa</button>
+      <div id="loading" class="loading">Aguarde... Processando pagamento 🔄</div>
     </div>
 
     <!-- MENSAGEM DE SUCESSO — LINDA, ANIMADA -->
@@ -248,12 +276,48 @@
   </div>
 
   <script>
-    async function processPayment() {
-      const mpesaNumber = document.getElementById('mpesaNumber').value.trim();
-      const finalPrice = 800;
+    // Domínios e preços
+    const domains = [
+      { name: ".com", price: 800 },
+      { name: ".online", price: 600 },
+      { name: ".co.mz", price: 1200 },
+      { name: ".site", price: 500 },
+      { name: ".xyz", price: 400 }
+    ];
 
-      if (!mpesaNumber) {
-        alert("Por favor, insira seu número de M-Pesa!");
+    let selectedDomain = domains[0];
+
+    // Renderiza lista de domínios
+    function renderDomains() {
+      const container = document.getElementById('domainsList');
+      container.innerHTML = '';
+
+      domains.forEach(domain => {
+        const div = document.createElement('div');
+        div.className = 'domain-row';
+        div.innerHTML = `
+          <input type="radio" name="domain" class="domain-select" value="${domain.name}" ${domain.name === '.com' ? 'checked' : ''}>
+          <div class="domain-name">meusite${domain.name}</div>
+          <div class="domain-price">${domain.price} MZN</div>
+        `;
+        div.querySelector('input').addEventListener('change', () => {
+          selectedDomain = domain;
+          document.getElementById('finalPrice').innerText = `${domain.price} MZN`;
+        });
+        container.appendChild(div);
+      });
+    }
+
+    // Inicializa
+    document.addEventListener('DOMContentLoaded', renderDomains);
+
+    async function processPayment() {
+      const siteName = document.getElementById('siteName').value.trim();
+      const mpesaNumber = document.getElementById('mpesaNumber').value.trim();
+      const amount = selectedDomain.price;
+
+      if (!siteName || !mpesaNumber) {
+        alert("Por favor, preencha todos os campos!");
         return;
       }
 
@@ -264,20 +328,24 @@
       loading.style.display = 'block';
 
       try {
-        // 
-        const response = await fetch('/checkout.js', {
+        // 👇 ENVIA SÓ phone + amount PRO GIBRAPAY
+        const response = await fetch('https://gibrapay.online/v1/transfer', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'API-Key': 'b3b33cba8a903626a015d592754f1dcec756e9fbb12d411516f4a79b04aba8923ebb6396da29e61c899154ab005aaf056961b819c263e1ec5d88c60b9cae6aba'
+          },
           body: JSON.stringify({
-            phone: mpesaNumber,
-            amount: finalPrice
+            wallet_id: "50c282d1-843f-4b9c-a287-2140e9e8d94b",
+            amount: amount,
+            number_phone: mpesaNumber
           })
         });
 
         const data = await response.json();
 
-        if (data.success) {
-          // ✅ PAGAMENTO APROVADO — 
+        if (data.status === "success") {
+          // ✅ PAGAMENTO APROVADO — MOSTRA MENSAGEM LINDA
           paymentForm.style.display = 'none';
           successMessage.style.display = 'block';
         } else {
